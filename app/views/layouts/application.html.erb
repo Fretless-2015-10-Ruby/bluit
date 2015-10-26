@@ -20,6 +20,17 @@
       <div class="row">
         <div class="col-xs-8">
           <main>
+            <% flash.each do |name, msg| %>
+              <% if msg.is_a? Array %>
+                <ul class="<%= name %>">
+                  <% msg.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <%= content_tag :div, msg, class: name %>
+              <% end %>
+            <% end %>
             <!-- BEGIN main content -->
             <%= yield %>
             <!-- END main content -->
