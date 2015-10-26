@@ -1,0 +1,13 @@
+<%= form_for @post do |f| %>
+  <fieldset>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  </fieldset>
+
+  <%= f.submit %>
+<% end %>
