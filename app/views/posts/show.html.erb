@@ -1,0 +1,8 @@
+<article class="post">
+  <div class="title">
+    <%= link_to @post.title, @post.link %>
+    <div class="tagline">
+      submitted at <%= time_ago_in_words @post.created_at %> ago
+    </div>
+  </div>
+</article>
