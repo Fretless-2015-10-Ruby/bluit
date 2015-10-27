@@ -1,4 +1,9 @@
 class CategoriesController < ApplicationController
+  before_action :find_category, only: [:show]
+
+  def show
+  end
+
   def new
     @category = Category.new
   end
@@ -17,5 +22,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :description)
+  end
+
+  def find_category
+    @category = Category.includes(:posts).find(params[:id])
   end
 end

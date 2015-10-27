@@ -1,0 +1,15 @@
+<div class="category">
+  <h2><%= @category.name %></h2>
+  <div class="description">
+    <%= @category.description %>
+  </div>
+</div>
+
+<ul class="posts">
+<% @category.posts.each do |post| %>
+  <li>
+    <%= render 'posts/slug', post: post %>
+    <%= render 'posts/actions', post: post, display_details: true %>
+  </li>
+<% end %>
+</ul>
