@@ -36,6 +36,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    if @post.destroy
+      redirect_to posts_path, notice: "Your post has been removed."
+    else
+      redirect_to posts_path, alert: "We were unable to remove that post."
+    end
+  end
+
   private
 
   def find_post

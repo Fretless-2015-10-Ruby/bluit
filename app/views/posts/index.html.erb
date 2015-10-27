@@ -3,12 +3,10 @@
 <ul class="posts">
 <% @posts.each do |post| %>
   <li>
-    <div class="title">
-      <a href="<%= post.link %>" target="_blank"><%= post.title %></a>
-    </div>
-    <div class="tagline" title="<%= post.created_at %>">
-      submitted <%= time_ago_in_words post.created_at %> ago
-    </div>
+
+    <%= render 'slug', post: post %>
+    <%= render 'actions', post: post, display_details: true %>
+
   </li>
 <% end %>
 </ul>

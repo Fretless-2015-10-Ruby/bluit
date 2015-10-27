@@ -1,0 +1,7 @@
+<ul class="actions">
+  <% if display_details %>
+    <li><%= link_to 'details', post_path(post) %></li>
+  <% end %>
+  <li><%= link_to 'edit', edit_post_path(post) %></li>
+  <li><%= link_to 'delete', post_path(post), method: :delete %></li>
+</ul>
