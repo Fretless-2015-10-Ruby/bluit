@@ -1,0 +1,13 @@
+<%= form_for category do |f| %>
+  <fieldset>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </fieldset>
+
+  <%= f.submit class: 'btn btn-default' %>
+<% end %>
