@@ -3,4 +3,5 @@ class Category < ActiveRecord::Base
   validates :description, length: { maximum: 500 }
 
   has_many :posts
+  default_scope { order(:name) }
 end
