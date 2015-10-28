@@ -15,6 +15,9 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @post.user != current_user
+      redirect_to posts_path, alert: "You are not allowed to edit that post."
+    end
   end
 
   def create
@@ -30,11 +33,15 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update post_params
-      redirect_to posts_path, notice: "Your changes have been saved."
+    if @post.user == current_user
+      if @post.update post_params
+        redirect_to posts_path, notice: "Your changes have been saved."
+      else
+        flash.now[:alert] = @post.errors.full_messages
+        render :edit
+      end
     else
-      flash.now[:alert] = @post.errors.full_messages
-      render :edit
+      redirect_to posts_path, alert: "You are not allowed to edit that post."
     end
   end
 
