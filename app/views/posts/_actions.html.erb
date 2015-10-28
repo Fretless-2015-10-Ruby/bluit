@@ -2,6 +2,8 @@
   <% if display_details %>
     <li><%= link_to 'details', post_path(post) %></li>
   <% end %>
-  <li><%= link_to 'edit', edit_post_path(post) %></li>
-  <li><%= link_to 'delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <% if user_signed_in? %>
+    <li><%= link_to 'edit', edit_post_path(post) %></li>
+    <li><%= link_to 'delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <% end %>
 </ul>
