@@ -4,15 +4,7 @@
 </article>
 
 <% if user_signed_in? %>
-  <%= form_for @comment do |f| %>
-    <fieldset>
-      <%= f.label :body %>
-      <%= f.text_area :body %>
-    </fieldset>
-    <%= f.hidden_field :commentable_type %>
-    <%= f.hidden_field :commentable_id %>
-    <%= f.submit class: 'btn btn-default' %>
-  <% end %>
+  <%= render 'comments/form', comment: @comment %>
 <% end %>
 
 <ol id="comments">
