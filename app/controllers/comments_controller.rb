@@ -1,9 +1,20 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @parent = Comment.find params[:parent_id]
+    post = @parent.commentable
+    @comment = Comment.build_from(post, current_user.id, '')
+    @comment.parent_id = @parent.id
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
   def create
     post = Post.find params[:comment][:commentable_id]
     comment = Comment.build_from post, current_user.id, params[:comment][:body]
+    comment.parent_id = params[:comment][:parent_id]
     if comment.save
       flash[:notice] = 'Your comment has been added.'
     else
