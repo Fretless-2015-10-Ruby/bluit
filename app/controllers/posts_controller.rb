@@ -3,11 +3,16 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = Post.includes(:category).paginate(page: params[:page])
+    @posts = Post.includes(:category)
+      .includes(:user)
+      .includes(:comment_threads)
+      .paginate(page: params[:page])
   end
 
-
   def show
+    if user_signed_in?
+      @comment = Comment.build_from(@post, current_user.id, "")
+    end
   end
 
   def new

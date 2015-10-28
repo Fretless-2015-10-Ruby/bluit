@@ -1,6 +1,8 @@
 <ul class="actions">
   <% if display_details %>
-    <li><%= link_to 'details', post_path(post) %></li>
+    <li>
+      <%= link_to "#{post.comment_threads.length} #{'comment'.pluralize(post.comment_threads.length)}", post_path(post, anchor: 'comments') %>
+    </li>
   <% end %>
   <% if user_signed_in? %>
     <li><%= link_to 'edit', edit_post_path(post) %></li>

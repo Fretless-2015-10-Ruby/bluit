@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   default_scope { order(created_at: :desc) }
 
+  acts_as_commentable
+
   # will_paginate configuration
   self.per_page = 4
 end

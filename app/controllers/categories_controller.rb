@@ -3,7 +3,9 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def show
-    @posts = @category.posts.paginate(page: params[:page])
+    @posts = @category.posts.includes(:user)
+    .includes(:comment_threads)
+    .paginate(page: params[:page])
   end
 
   def new
