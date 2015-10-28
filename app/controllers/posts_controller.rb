@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:category)
       .includes(:user)
-      .includes(:comment_threads)
+      .includes(comment_threads: [:user])
       .paginate(page: params[:page])
   end
 
