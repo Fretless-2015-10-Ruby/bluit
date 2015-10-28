@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :find_category, only: [:show]
 
   def show
+    @posts = @category.posts.paginate(page: params[:page])
   end
 
   def new

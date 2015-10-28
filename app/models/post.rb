@@ -3,4 +3,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :category
   default_scope { order(created_at: :desc) }
+
+  # will_paginate configuration
+  self.per_page = 4
 end
